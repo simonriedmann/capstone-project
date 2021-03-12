@@ -1,0 +1,15 @@
+[
+    {
+      "id": "12445",
+      "name": "Chinese Restaurant",
+      "website": "https://www.vujaa.de/",
+      "coordinates": [48.137154, 11.576124]
+  },
+
+  {
+        "id": "12446",
+        "name": "Indian Restaurant",
+      "website": "https://www.vujaa.de/",
+      "coordinates": [48.2, 11.6]
+  }
+]
