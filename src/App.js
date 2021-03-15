@@ -10,13 +10,13 @@ function Map() {
 
   return (
   <GoogleMap
-        defaultZoom={10}
-        defaultCenter={{ lat: 48.137154, lng: 11.576124 }}
+        defaultZoom={9}
+        defaultCenter={{ lat: 48.269789183437375, lng: 11.193012202583548 }}
         >
 
         {restaurantData.map(restaurant => (
           <Marker
-            key={restaurant.id}
+            /*key={restaurant.id}*/
             position={{
               lat: restaurant.coordinates[0],
               lng: restaurant.coordinates[1]
@@ -30,6 +30,8 @@ function Map() {
             }}
         />
         ))}
+
+
 
           {selectedRestaurant ? (<InfoWindow
               position={{
@@ -53,7 +55,6 @@ function Map() {
 
 
 
-
 const MapWrapped = withScriptjs(withGoogleMap(Map));
 
 
@@ -61,6 +62,7 @@ export default function App() {
   return (
     <div>
       <Header/>
+
       <div style={{width: '100vw', height: '70vh'}}>
         <MapWrapped
                   googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
