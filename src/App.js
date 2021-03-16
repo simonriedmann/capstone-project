@@ -3,10 +3,67 @@ import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react
 import restaurantData from "./data/restaurants.json";
 
 import Header from './components/Header';
-import Navbar from './components/Navbar';
+
 
 function Map() {
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+
+  function restaurantIcon(type) {
+    if (type === "Cafe") {
+
+      return {
+        url: "/cafe.svg",
+        scaledSize: new window.google.maps.Size(25, 25)
+      }
+    } 
+    
+    else if (type === "Ice Cream") {
+
+      return {
+        url: "/icecream.svg",
+        scaledSize: new window.google.maps.Size(25, 25)
+      }
+    } 
+
+    else if (type === "Bakery") {
+
+      return {
+        url: "/bakery.svg",
+        scaledSize: new window.google.maps.Size(25, 25)
+      }
+    } 
+
+    else if (type === "Vegan") {
+
+      return {
+        url: "/vegan.svg",
+        scaledSize: new window.google.maps.Size(25, 25)
+      }
+    } 
+
+    else if (type === "Mexican") {
+
+      return {
+        url: "/mexican.svg",
+        scaledSize: new window.google.maps.Size(25, 25)
+      }
+    } 
+
+    else if (type === "Italian") {
+
+      return {
+        url: "/italian.svg",
+        scaledSize: new window.google.maps.Size(25, 25)
+      }
+    } 
+
+    else {
+      return {
+        url: "/glutenfree.svg",
+        scaledSize: new window.google.maps.Size(25, 25)
+      }
+    }
+  }
 
   return (
   <GoogleMap
@@ -16,7 +73,6 @@ function Map() {
 
         {restaurantData.map(restaurant => (
           <Marker
-            /*key={restaurant.id}*/
             position={{
               lat: restaurant.coordinates[0],
               lng: restaurant.coordinates[1]
@@ -24,10 +80,8 @@ function Map() {
             onClick={() => {
               setSelectedRestaurant(restaurant);
             }}
-            icon={{
-              url: "/glutenfree.svg",
-              scaledSize: new window.google.maps.Size(25, 25)
-            }}
+            icon={restaurantIcon(restaurant.type)}
+          
         />
         ))}
 
@@ -44,7 +98,10 @@ function Map() {
               >
                 <div>
                   <h2>{selectedRestaurant.name}</h2>
-                  <p>{selectedRestaurant.website}</p>
+                  <p>Type: {selectedRestaurant.type}</p>
+                  <p>Address: {selectedRestaurant.street}, {selectedRestaurant.postal_code} {selectedRestaurant.city}</p>
+                  <p>Menu: {selectedRestaurant.website}</p>
+                  <p>Phone: {selectedRestaurant.phone}</p>
                 </div>
               </InfoWindow>
             ) : null}
@@ -73,7 +130,7 @@ export default function App() {
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
-      <Navbar/>
+
     </div>
   )
 }
