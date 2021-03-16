@@ -1,7 +1,18 @@
+/*
 import React, {useState, useEffect} from 'react';
 import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps';
 import restaurantData from "../data/restaurants.json";
-
+import usePlacesAutocomplete, {
+    getGeocode,
+    getLatLng,
+  } from "use-places-autocomplete";
+  import {
+    Combobox,
+    ComboboxInput,
+    ComboboxPopover,
+    ComboboxList,
+    ComboboxOption,
+  } from "@reach/combobox";
 
 
 export default function Map() {
@@ -107,3 +118,5 @@ export default function Map() {
       </GoogleMap>
     )
   }
+
+ */
