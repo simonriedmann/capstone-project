@@ -1,68 +1,79 @@
-import React, {useState, useEffect} from 'react';
-import {GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from 'react-google-maps';
+import React from "react";
+import {
+  GoogleMap,
+  useLoadScript,
+  Marker,
+  InfoWindow,
+} from "@react-google-maps/api";
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng,
+} from "use-places-autocomplete";
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxPopover,
+  ComboboxList,
+  ComboboxOption,
+} from "@reach/combobox";
+
 import restaurantData from "./data/restaurants.json";
 
-import Header from './components/Header';
-import Navbar from './components/Navbar';
+const libraries = ["places"];
+const mapContainerStyle = {
+  height: "70vh",
+  width: "100vw",
+};
+const center = {
+  lat: 43.6532,
+  lng: -79.3832,
+};
 
-function Map() {
-  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+
+export default function App() {
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries,
+  });
+
+  if (loadError) return "Error";
+  if (!isLoaded) return "Loading...";
 
   return (
-  <GoogleMap
-        defaultZoom={9}
-        defaultCenter={{ lat: 48.269789183437375, lng: 11.193012202583548 }}
-        >
-
-        {restaurantData.map(restaurant => (
-          <Marker
-            /*key={restaurant.id}*/
-            position={{
-              lat: restaurant.coordinates[0],
-              lng: restaurant.coordinates[1]
-            }}
-            onClick={() => {
-              setSelectedRestaurant(restaurant);
-            }}
-            icon={{
-              url: "/glutenfree.svg",
-              scaledSize: new window.google.maps.Size(25, 25)
-            }}
-        />
-        ))}
-
-
-
-          {selectedRestaurant ? (<InfoWindow
-              position={{
-                lat: selectedRestaurant.coordinates[0],
-                lng: selectedRestaurant.coordinates[1]
-              }}
-              onCloseClick={() => {
-                setSelectedRestaurant(null);
-              }}
-              >
-                <div>
-                  <h2>{selectedRestaurant.name}</h2>
-                  <p>{selectedRestaurant.website}</p>
-                </div>
-              </InfoWindow>
-            ) : null}
-    </GoogleMap>
-  )
+    <div>
+      <GoogleMap>
+        id="map"
+        mapContainerStyle={mapContainerStyle}
+        zoom={8}
+        center={center}
+      </GoogleMap>
+    </div>
+  );
 }
+
+
+
+/*
+import Header from './components/Header';
+import Map from './components/Map';
+
 
 
 
 
 const MapWrapped = withScriptjs(withGoogleMap(Map));
 
-
 export default function App() {
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries,
+  });
+
+
   return (
     <div>
       <Header/>
-
+      <Search />
       <div style={{width: '100vw', height: '70vh'}}>
         <MapWrapped
                   googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
@@ -73,7 +84,8 @@ export default function App() {
           mapElement={<div style={{ height: `100%` }} />}
         />
       </div>
-      <Navbar/>
+
     </div>
   )
 }
+*/
