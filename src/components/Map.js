@@ -7,63 +7,6 @@ import restaurantData from "../data/restaurants.json";
 export default function Map() {
     const [selectedRestaurant, setSelectedRestaurant] = useState(null);
   
-    function restaurantIcon(type) {
-      if (type === "Cafe") {
-  
-        return {
-          url: "/cafe.svg",
-          scaledSize: new window.google.maps.Size(25, 25)
-        }
-      } 
-      
-      else if (type === "Ice Cream") {
-  
-        return {
-          url: "/icecream.svg",
-          scaledSize: new window.google.maps.Size(25, 25)
-        }
-      } 
-  
-      else if (type === "Bakery") {
-  
-        return {
-          url: "/bakery.svg",
-          scaledSize: new window.google.maps.Size(25, 25)
-        }
-      } 
-  
-      else if (type === "Vegan") {
-  
-        return {
-          url: "/vegan.svg",
-          scaledSize: new window.google.maps.Size(25, 25)
-        }
-      } 
-  
-      else if (type === "Mexican") {
-  
-        return {
-          url: "/mexican.svg",
-          scaledSize: new window.google.maps.Size(25, 25)
-        }
-      } 
-  
-      else if (type === "Italian") {
-  
-        return {
-          url: "/italian.svg",
-          scaledSize: new window.google.maps.Size(25, 25)
-        }
-      } 
-  
-      else {
-        return {
-          url: "/glutenfree.svg",
-          scaledSize: new window.google.maps.Size(25, 25)
-        }
-      }
-    }
-  
     return (
     <GoogleMap
           defaultZoom={9}
@@ -107,3 +50,14 @@ export default function Map() {
       </GoogleMap>
     )
   }
+
+  <div style={{}}>
+  <MapWrapped
+            googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
+              process.env.REACT_APP_GOOGLE__MAPS_API_KEY
+            }`}
+    loadingElement={<div style={{ height: `100%` }} />}
+    containerElement={<div style={{ height: `100%` }} />}
+    mapElement={<div style={{ height: `100%` }} />}
+  />
+</div>
