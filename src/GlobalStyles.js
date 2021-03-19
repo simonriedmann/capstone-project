@@ -11,6 +11,8 @@ body {
     font-size: 1.25rem;
     margin: 0;
     padding: 0;
+    display: flex
+    ;
 
     h1 {
         padding: 1rem;
