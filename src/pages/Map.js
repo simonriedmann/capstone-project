@@ -20,6 +20,7 @@ import restaurantData from "../data/restaurants.json";
 import Header from '../components/Header';
 import mapStyles from '../mapStyles';
 import AddFavorite from '../components/AddFavorites';
+import { ReactComponent as Heart} from '../assets/heart_full.svg';
 
 
 
@@ -73,6 +74,12 @@ export default function Map(
     setFavoriteRestaurants(newFavoriteList);
   }
 
+  function removeFavoriteRestaurant(restaurant){
+    const newFavoriteList = favoriteRestaurants.filter((favorite) => restaurant.name !== favorite.name);
+    setFavoriteRestaurants(newFavoriteList);
+
+  }
+
   return (
     <div>
 
@@ -101,7 +108,7 @@ export default function Map(
               }}
               icon={restaurantIcon(restaurant.type)}
               />
-
+              
           ))}
 
           {selectedRestaurant ? (<InfoWindow
@@ -119,14 +126,23 @@ export default function Map(
                     <p>Address: {selectedRestaurant.street}, {selectedRestaurant.postal_code} {selectedRestaurant.city}</p>
                     <p>Menu: {selectedRestaurant.website}</p>
                     <p>Phone: {selectedRestaurant.phone}</p>
-                    <button>Add to favorite</button>
+                    <button onClick={() => addFavoriteRestaurant(selectedRestaurant)}>
+                      <Heart />
+                    </button>
                   </div>
 
                 </InfoWindow>
               ) : null} 
       </GoogleMap>
-
-      
+    
+        {favoriteRestaurants.map(favorite => (
+            <div>
+              <p>{favorite.name}</p>
+              <button onClick={() => removeFavoriteRestaurant(favorite)}>
+                Remove
+              </button>
+            </div>
+        ))}      
     </div>)}
 
 
