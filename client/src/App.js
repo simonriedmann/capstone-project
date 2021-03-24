@@ -4,12 +4,6 @@ import {
   Switch, Route
 } from "react-router-dom";
 
-
-
-
-
-
-import Header from './components/Header';
 import Navigation from './components/Navigation';
 import Map from './pages/Map';
 import Home from './pages/Home';
