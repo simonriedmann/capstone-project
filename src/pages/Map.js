@@ -11,12 +11,15 @@ import usePlacesAutocomplete, {
 } from "use-places-autocomplete";
 import {  Combobox,  ComboboxInput,  ComboboxPopover,  ComboboxList,  ComboboxOption} from "@reach/combobox";
 import "@reach/combobox/styles.css";
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 
 import restaurantData from "../data/restaurants.json";
 
 import Header from '../components/Header';
 import mapStyles from '../mapStyles';
+import AddFavorite from '../components/AddFavorites';
 
 
 
@@ -35,13 +38,20 @@ const options = {
 }
 
 
-export default function Map() {
+
+
+
+export default function Map(
+
+
+) {
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE__MAPS_API_KEY,
     libraries,
   });
 
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [favoriteRestaurants, setFavoriteRestaurants] = useState([]);
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -57,6 +67,11 @@ export default function Map() {
   if(!isLoaded) return "Loading Maps";
   
 
+
+  function addFavoriteRestaurant(restaurant){
+    const newFavoriteList = [...favoriteRestaurants, restaurant];
+    setFavoriteRestaurants(newFavoriteList);
+  }
 
   return (
     <div>
@@ -104,10 +119,13 @@ export default function Map() {
                     <p>Address: {selectedRestaurant.street}, {selectedRestaurant.postal_code} {selectedRestaurant.city}</p>
                     <p>Menu: {selectedRestaurant.website}</p>
                     <p>Phone: {selectedRestaurant.phone}</p>
+                    <button>Add to favorite</button>
                   </div>
+
                 </InfoWindow>
               ) : null} 
       </GoogleMap>
+
       
     </div>)}
 
@@ -261,6 +279,9 @@ function Locate({ panTo }) {
     }
   }
   
+
+
+
   
   
   

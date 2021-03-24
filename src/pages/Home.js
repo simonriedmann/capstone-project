@@ -1,5 +1,12 @@
+import styled from 'styled-components';
+
+import Header from '../components/Header';
+
+
+
 export default function FavoriteRestaurants(){
     return (
-        <h1>Home</h1>
+            <Header />
     )
 }
+

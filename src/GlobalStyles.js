@@ -11,7 +11,11 @@ body {
     font-size: 1.25rem;
     margin: 0;
     padding: 0;
-    display: flex
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     ;
 
     h1 {
