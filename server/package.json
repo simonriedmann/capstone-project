@@ -1,7 +1,7 @@
 {
-  "name": "wizard-shop-api",
+  "name": "gluten-free-api",
   "version": "1.0.0",
-  "description": "Wizard shop api",
+  "description": "Gluten free api",
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/server.js",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/miriamhaenle/wizard-shop-api.git"
+    "url": "git+https://github.com/simonriedmann/capstone-project.git"
   },
-  "author": "Miriam Haenle",
+  "author": "Simon Riedmann",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/miriamhaenle/wizard-shop-api/issues"
+    "url": "https://github.com/simonriedmann/capstone-project/issues"
   },
-  "homepage": "https://github.com/miriamhaenle/wizard-shop-api#readme",
+  "homepage": "https://github.com/simonriedmann/capstone-project#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",

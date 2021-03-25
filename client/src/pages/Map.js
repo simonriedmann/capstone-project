@@ -12,14 +12,11 @@ import usePlacesAutocomplete, {
 import {  Combobox,  ComboboxInput,  ComboboxPopover,  ComboboxList,  ComboboxOption} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
 
 import restaurantData from "../data/restaurants.json";
 
-import Header from '../components/Header';
 import mapStyles from '../mapStyles';
-import AddFavorite from '../components/AddFavorites';
 import { ReactComponent as Heart} from '../assets/heart_full.svg';
 
 
@@ -39,15 +36,12 @@ const options = {
 }
 
 
-
-
-
 export default function Map(
 
 
 ) {
   const {isLoaded, loadError} = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE__MAPS_API_KEY,
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
 
@@ -81,10 +75,7 @@ export default function Map(
   }
 
   return (
-    <div>
-
-      <Header/>
-
+    <MapContainer>
       <Locate panTo={panTo} />
       <Search panTo={panTo} />
 
@@ -143,13 +134,13 @@ export default function Map(
               </button>
             </div>
         ))}      
-    </div>)}
+    </MapContainer>)}
 
 
 
-
-
-
+const MapContainer = styled.div`
+    margin-top: 6rem;
+`
 
 function Locate({ panTo }) {
     return (

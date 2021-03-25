@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const pruneDatabase = async (req, res) => {
-  if (process.env.DB_NAME === 'wizard-shop-test') {
+  if (process.env.DB_NAME === 'glutenfree-restaurants') {
     try {
       const collections = await mongoose.connection.db.collections();
       collections.forEach(async (collection) => {

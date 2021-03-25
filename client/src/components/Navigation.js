@@ -25,6 +25,7 @@ export default function Navigation(){
 
 
 const Nav = styled.nav`
+  position: fixed;
   display: flex;
   color: grey;
   background: orange;
@@ -36,6 +37,8 @@ const Nav = styled.nav`
   padding: 2rem;
   position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
 
 
 
