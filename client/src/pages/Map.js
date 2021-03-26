@@ -12,12 +12,10 @@ import usePlacesAutocomplete, {
 import {  Combobox,  ComboboxInput,  ComboboxPopover,  ComboboxList,  ComboboxOption} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import styled from 'styled-components';
-
-
 import restaurantData from "../data/restaurants.json";
-
 import mapStyles from '../mapStyles';
 import { ReactComponent as Heart} from '../assets/heart_full.svg';
+
 
 
 

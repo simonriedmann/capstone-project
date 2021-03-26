@@ -17,16 +17,19 @@ import FavoriteRestaurants from './pages/FavoriteRestaurants'
 
 
 export default function App() {
-  const apiServerURL = '/api';
+  /*const apiServerURL = '/api';
 
   const [restaurants, setRestaurants] = useLocalStorage('Restaurants', [])
 
+
+  
   useEffect(() => {
     fetch(apiServerURL + '/restaurants')
       .then((result) => result.json())
       .then((restaurants) => setRestaurants(restaurants))
       .catch((error) => console.error(error.message));
   }, []);
+  */
   
 
 
