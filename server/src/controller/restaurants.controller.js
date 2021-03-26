@@ -22,7 +22,6 @@ async function getRestaurant(req, res) {
 
 async function postRestaurant(req, res) {
   const newRestaurant = new Restaurant({
-
     name: req.body.name,
     type: req.body.type,
     website: req.body.website,
@@ -35,7 +34,7 @@ async function postRestaurant(req, res) {
   });
   try {
     const restaurant = await saveToDb(newRestaurant);
-    res.json();
+    res.json(restaurant);
   } catch (error) {
     res.json(error);
   }
