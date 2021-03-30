@@ -24,6 +24,7 @@ const HeaderSection = styled.section`
     padding: 0.5rem;
     background-color: orange;
     margin-bottom: 0.5rem;
+    z-index: 2;
 `
 
 

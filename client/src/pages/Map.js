@@ -12,9 +12,7 @@ import usePlacesAutocomplete, {
 import {  Combobox,  ComboboxInput,  ComboboxPopover,  ComboboxList,  ComboboxOption} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import styled from 'styled-components';
-import restaurantData from "../data/restaurants.json";
 import mapStyles from '../mapStyles';
-import { ReactComponent as Heart} from '../assets/heart_full.svg';
 
 
 
@@ -34,9 +32,11 @@ const options = {
 }
 
 
-export default function Map(
-
-
+export default function Map({
+  restaurantData,
+  addFavoriteRestaurant,
+  favoriteRestaurants,
+}
 ) {
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -44,7 +44,7 @@ export default function Map(
   });
 
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
-  const [favoriteRestaurants, setFavoriteRestaurants] = useState([]);
+
 
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
@@ -59,19 +59,6 @@ export default function Map(
   if(loadError) return "Error loading maps";
   if(!isLoaded) return "Loading Maps";
   
-
-
-  function addFavoriteRestaurant(restaurant){
-    const newFavoriteList = [...favoriteRestaurants, restaurant];
-    setFavoriteRestaurants(newFavoriteList);
-  }
-
-  function removeFavoriteRestaurant(restaurant){
-    const newFavoriteList = favoriteRestaurants.filter((favorite) => restaurant.name !== favorite.name);
-    setFavoriteRestaurants(newFavoriteList);
-
-  }
-
   return (
     <MapContainer>
       <Locate panTo={panTo} />
@@ -88,6 +75,7 @@ export default function Map(
         >
         {restaurantData.map(restaurant => (
             <Marker
+              key={restaurant._id}
               position={{
                 lat: restaurant.coordinates[0],
                 lng: restaurant.coordinates[1]
@@ -115,25 +103,20 @@ export default function Map(
                     <p>Address: {selectedRestaurant.street}, {selectedRestaurant.postal_code} {selectedRestaurant.city}</p>
                     <p>Menu: {selectedRestaurant.website}</p>
                     <p>Phone: {selectedRestaurant.phone}</p>
-                    <button onClick={() => addFavoriteRestaurant(selectedRestaurant)}>
-                      <Heart />
-                    </button>
+                    <FavoriteButton                 
+                      isFavorite={favoriteRestaurants.some(
+                        (favoriteRestaurant) => selectedRestaurant._id === favoriteRestaurant._id
+                      )} 
+                      onClick={() => addFavoriteRestaurant(selectedRestaurant)}>
+                      <div></div>
+                    </FavoriteButton>
+
                   </div>
 
                 </InfoWindow>
               ) : null} 
       </GoogleMap>
-    
-        {favoriteRestaurants.map(favorite => (
-            <div>
-              <p>{favorite.name}</p>
-              <button onClick={() => removeFavoriteRestaurant(favorite)}>
-                Remove
-              </button>
-            </div>
-        ))}      
     </MapContainer>)}
-
 
 
 const MapContainer = styled.div`
@@ -283,9 +266,45 @@ function Locate({ panTo }) {
       }
     }
   }
-  
 
 
+ const FavoriteButton = styled.div`
+  right: 2.5rem;
+  margin-top: 0.25rem;
+  position: absolute;
+  top: 2.4rem;
+
+  div {
+    height: 1rem;
+    width: 1rem;
+    background: ${(props) =>
+      props.isFavorite ? 'var(--primary-400)' : 'var(--grey-200)'};
+    transform: rotate(45deg);
+
+    &::before {
+      content: '';
+      height: 1rem;
+      width: 1rem;
+      background: ${(props) =>
+        props.isFavorite ? 'var(--primary-400)' : 'var(--grey-200)'};
+      position: absolute;
+      border-radius: 50%;
+      right: 10px;
+      bottom: 0px;
+    }
+    &::after {
+      content: '';
+      height: 1rem;
+      width: 1rem;
+      background: ${(props) =>
+        props.isFavorite ? 'var(--primary-400)' : 'var(--grey-200)'};
+      border-radius: 50%;
+      position: absolute;
+      right: 0px;
+      bottom: 11px;
+    }
+  }
+`;
 
   
   
