@@ -25,13 +25,13 @@ export default function FavoriteRestaurants({
       <Main>
         <h1>Favorite Restaurants</h1>
         <Wrapper>
-          {favoriteRestaurants.map((restaurant, index) => (
+          {favoriteRestaurants.map((restaurant) => (
             <RestaurantCard
-              key={restaurant._id + index}
+              key={restaurant._id}
               restaurant={restaurant}
-              onAddToFavorites={() => removeFavoriteRestaurant(restaurant)}
-              isFavorite={() => isFavorite(restaurant)}
-              onDeleteCard={() => removeFavoriteRestaurant(restaurant)}
+              onToggleFavoriteRestaurant={() => removeFavoriteRestaurant(restaurant)}
+              isFavorite={isFavorite(restaurant)}
+              onRemoveFromFavorites={() => removeFavoriteRestaurant(restaurant)}
             />
           ))}
         </Wrapper>

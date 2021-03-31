@@ -73,7 +73,7 @@ export default function Map({
   if(!isLoaded) return "Loading Maps";
   
   return (
-    <div>
+    <Main>
     <MapContainer>
       <Locate panTo={panTo} />
       <Search panTo={panTo} />
@@ -132,19 +132,30 @@ export default function Map({
       </GoogleMap>
     </MapContainer>
     
-    <Categories>
+    <ButtonBox>
             
-              <Category
-                onClick={() => filterByType("Italian")}
-              >
+              <FilterButton onClick={() => filterByType("Italian")}>
                 Show Italian
-              </Category>
+              </FilterButton>
+              <FilterButton onClick={() => filterByType("German")}>
+                Show German
+              </FilterButton>
+              <FilterButton onClick={() => filterByType("Cafe")}>
+                Show Cafe
+              </FilterButton>
+              <FilterButton onClick={() => filterByType("Vegan" || "Vegetarian")}>
+                Show Vegan/Vegetarian
+              </FilterButton>
+              <FilterButton onClick={() => filterByType("Bakery")}>
+                Show Bakery
+              </FilterButton>
+              <FilterButton onClick={() => filterByType("Bakery")}>
+                Show Bakery
+              </FilterButton>
 
-            <Category onClick={() => showAllRestaurants(restaurantData)}>Reset</Category>
-          </Categories>
-
-
-    </div>
+            <FilterButton onClick={() => showAllRestaurants(restaurantData)}>Reset</FilterButton>
+          </ButtonBox>
+    </Main>
     )}
 
 
@@ -297,36 +308,33 @@ function Locate({ panTo }) {
   }
 
 
+  const Main = styled.div`
+    margin-top: 6rem;
+    margin-bottom: 8rem;
 
 
-const Categories = styled.div`
-display: grid;
-grid-template-columns: repeat(7, 1fr);
+  `;
+
+const ButtonBox = styled.div`
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
 gap: 0.5rem;
 place-items: center;
 margin: 0.5rem auto 1rem;
-max-width: 400px;
 padding: 0.25rem;
 `;
 
-const Category = styled.div`
-background: ${(props) =>
-  props.active ? 'var(--secondary-300)' : 'var(--grey-100)'};
+const FilterButton = styled.button`
 color: var(--grey-500);
 fill: var(--grey-500);
 font-size: 1rem;
 border-radius: 0.5rem;
-display: grid;
-place-items: center;
-width: 3rem;
-height: 3rem;
-svg {
-  width: 70%;
-  height: 70%;
-  fill: ${(props) => props.active && 'var(--secondary-500)'};
+display: flex;
+margin: 0.5rem;
 }`;
 
- const FavoriteButton = styled.div`
+const FavoriteButton = styled.div`
   right: 2rem;
   margin-top: 0.25rem;
   position: absolute;
