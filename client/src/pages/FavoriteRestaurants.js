@@ -21,8 +21,6 @@ export default function FavoriteRestaurants({
     }
 
   
-
-  
     return (
       <Main>
         <h1>Favorite Restaurants</h1>
@@ -41,13 +39,15 @@ export default function FavoriteRestaurants({
     );
   }
   
-  const Main = styled.main`
-    margin: 8rem;
-  
+  const Main = styled.div`
+    margin-top: 6rem;
+    margin-bottom: 8rem;
+      
     h1 {
       padding: 2rem;
       text-align: center;
     }
+
   `;
   
   const Wrapper = styled.section`

@@ -1,7 +1,5 @@
 
 
-
-
 export default function FavoriteRestaurants(){
     return (
     <div>

@@ -41,6 +41,7 @@ export default function RestaurantCard({
     min-width: 16rem;
     overflow: hidden;
     z-index: 1;
+    margin: 0.5rem;
   
     position: relative;
   `;
@@ -52,11 +53,11 @@ export default function RestaurantCard({
   
     p {
       color: white;
-      font-size: 0.75rem;
+      font-size: 1rem;
       display: inline-block;
       margin-bottom: 0.75rem;
       left: 0;
-      line-height: 0.75rem;
+      line-height: 1rem;
       padding-right: 0.75rem;
       position: relative;
   

@@ -43,6 +43,8 @@ export default function Map({
     libraries,
   });
 
+
+  const [displayedRestaurants, setDisplayedRestaurants] = useState(restaurantData);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
 
@@ -53,13 +55,25 @@ export default function Map({
 
   const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(14);
+    mapRef.current.setZoom(9);
   }, []);
+
+  const filterByType = (typeToUpdate) => {
+    setDisplayedRestaurants(
+      restaurantData.filter((restaurant) => restaurant.type === typeToUpdate)
+    )
+  }
+
+  const showAllRestaurants = (restaurants) => {
+    setDisplayedRestaurants(restaurantData);
+  }
+
   
   if(loadError) return "Error loading maps";
   if(!isLoaded) return "Loading Maps";
   
   return (
+    <div>
     <MapContainer>
       <Locate panTo={panTo} />
       <Search panTo={panTo} />
@@ -73,7 +87,7 @@ export default function Map({
         onLoad={onMapLoad}
 
         >
-        {restaurantData.map(restaurant => (
+        {displayedRestaurants.map(restaurant => (
             <Marker
               key={restaurant._id}
               position={{
@@ -116,7 +130,22 @@ export default function Map({
                 </InfoWindow>
               ) : null} 
       </GoogleMap>
-    </MapContainer>)}
+    </MapContainer>
+    
+    <Categories>
+            
+              <Category
+                onClick={() => filterByType("Italian")}
+              >
+                Show Italian
+              </Category>
+
+            <Category onClick={() => showAllRestaurants(restaurantData)}>Reset</Category>
+          </Categories>
+
+
+    </div>
+    )}
 
 
 const MapContainer = styled.div`
@@ -268,11 +297,40 @@ function Locate({ panTo }) {
   }
 
 
+
+
+const Categories = styled.div`
+display: grid;
+grid-template-columns: repeat(7, 1fr);
+gap: 0.5rem;
+place-items: center;
+margin: 0.5rem auto 1rem;
+max-width: 400px;
+padding: 0.25rem;
+`;
+
+const Category = styled.div`
+background: ${(props) =>
+  props.active ? 'var(--secondary-300)' : 'var(--grey-100)'};
+color: var(--grey-500);
+fill: var(--grey-500);
+font-size: 1rem;
+border-radius: 0.5rem;
+display: grid;
+place-items: center;
+width: 3rem;
+height: 3rem;
+svg {
+  width: 70%;
+  height: 70%;
+  fill: ${(props) => props.active && 'var(--secondary-500)'};
+}`;
+
  const FavoriteButton = styled.div`
-  right: 2.5rem;
+  right: 2rem;
   margin-top: 0.25rem;
   position: absolute;
-  top: 2.4rem;
+  top: 4.5rem;
 
   div {
     height: 1rem;

@@ -10,16 +10,12 @@ import Map from './pages/Map';
 import FavoriteRestaurants from './pages/FavoriteRestaurants'
 
 
-
-
-
 export default function App() {
   const apiServerURL = '/api';
 
   const [restaurants, setRestaurants] = useLocalStorage('Restaurants', []);
 
   const [favoriteRestaurants, setFavoriteRestaurants] = useLocalStorage('FavoriteRestaurants', []);
-
 
   useEffect(() => {
     fetch(apiServerURL + '/restaurants')
@@ -46,11 +42,7 @@ export default function App() {
     }
   };
 
-
-
-
   
-
   return (
     <>
     <Header />
