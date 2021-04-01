@@ -149,8 +149,8 @@ export default function Map({
               <FilterButton onClick={() => filterByType("Bakery")}>
                 Show Bakery
               </FilterButton>
-              <FilterButton onClick={() => filterByType("Bakery")}>
-                Show Bakery
+              <FilterButton onClick={() => filterByType("Mexican")}>
+                Show Mexican
               </FilterButton>
 
             <FilterButton onClick={() => showAllRestaurants(restaurantData)}>Reset</FilterButton>

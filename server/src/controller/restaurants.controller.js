@@ -30,7 +30,6 @@ async function postRestaurant(req, res) {
     city: req.body.city,
     phone: req.body.phone,
     coordinates: req.body.coordinates,
-
   });
   try {
     const restaurant = await saveToDb(newRestaurant);
