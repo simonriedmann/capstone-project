@@ -2,22 +2,22 @@ import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
 import { ReactComponent as HeartLogo} from '../assets/heart.svg';
 import { ReactComponent as MapLogo} from '../assets/map.svg';
-import { ReactComponent as Home} from '../assets/home.svg';
+import { ReactComponent as PlusSign} from '../assets/plus.svg';
 
 
 export default function Navigation(){
     return (
           <Nav>
                 <NavLink exact to="/">
-                  <Home />
-                </NavLink>
-
-                <NavLink to="/map">
                   <MapLogo />
                 </NavLink>
 
                 <NavLink to="/favoriterestaurants">
                   <HeartLogo />
+                </NavLink>
+
+                <NavLink to="/addrestaurant">
+                  <PlusSign />
                 </NavLink>
           </Nav>
     )

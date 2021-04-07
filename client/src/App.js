@@ -70,11 +70,6 @@ export default function App() {
     <Navigation />
     <Switch>
       <Route exact path="/">
-        <AddRestaurant 
-          addRestaurant={addRestaurant}
-        />
-      </Route>  
-      <Route path="/map">
         <Map 
           restaurantData={restaurants}
           favoriteRestaurants={favoriteRestaurants}
@@ -87,6 +82,11 @@ export default function App() {
           updateFavorites={updateFavorites}  
         />
       </ Route>
+      <Route path="/addrestaurant">
+        <AddRestaurant 
+          addRestaurant={addRestaurant}
+        />
+      </Route>  
     </Switch>
   </>
   );

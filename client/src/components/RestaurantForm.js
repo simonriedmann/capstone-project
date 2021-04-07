@@ -75,24 +75,70 @@ export default function RestaurantForm({ onSubmitForm }) {
       </RestaurantType>
 
       <Contact>
-        <label htmlFor="supportContact">Contact</label>
-        <input
-          type="website"
-          name="supportContact"
-          value={restaurant.website}
-          onChange={handleChange}
-        />
-        <input
-          type="phone"
-          name="supportContact"
-          value={restaurant.phone}
-          onChange={handleChange}
-        />
+
+      <label htmlFor="website">Website</label>
+      <input
+        type="text"
+        name="website"
+        value={restaurant.website}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="street">Street</label>
+      <input
+        type="text"
+        name="street"
+        value={restaurant.street}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="postal_code">Postal code</label>
+      <input
+        type="text"
+        name="postal_code"
+        value={restaurant.postal_code}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="city">City</label>
+      <input
+        type="text"
+        name="city"
+        value={restaurant.city}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="phone">Phone</label>
+      <input
+        type="text"
+        name="phone"
+        value={restaurant.phone}
+        onChange={handleChange}
+      />
+
       </Contact>
 
+      <label htmlFor="coordinates_latitude">Coordinate Latitude</label>
+      <input
+        type="text"
+        name="coordinates_latitude"
+        value={restaurant.coordinates[0]}
+        onChange={handleChange}
+      />
+
+      <label htmlFor="coordinates_longitude">Coordinate Longitude</label>
+      <input
+        type="text"
+        name="coordinates_longitude"
+        value={restaurant.coordinates[1]}
+        onChange={handleChange}
+      />
+  
+
+
       <Buttons>
-        <Button text="Add" color="var(--primary-200)" />
-        <Button type="reset" text="Reset" handlerFn={resetForm} />
+        <Button text="Add" color="orange" />
+        <Button type="reset" color="white" text="Reset" handlerFn={resetForm} />
       </Buttons>
     </Form>
   );
@@ -103,7 +149,7 @@ RestaurantForm.propTypes = {
 };
 
 const Form = styled.form`
-  background: var(--primary-300);
+  background: white;
   display: grid;
   gap: 0.5rem;
   max-width: 500px;
@@ -133,6 +179,7 @@ const Contact = styled.div`
 const Buttons = styled.div`
   display: flex;
   justify-content: space-evenly;
+  margin: 0.5rem;
   button {
     width: 48%;
   }

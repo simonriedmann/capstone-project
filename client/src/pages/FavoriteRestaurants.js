@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import RestaurantCard from '../components/RestaurantCard';
 
 export default function FavoriteRestaurants({
     favoriteRestaurants,
     updateFavorites,
   }) {
+    
     const isFavorite = (restaurant) =>
       favoriteRestaurants.some(
         (favoriteRestaurant) => restaurant._id === favoriteRestaurant._id
@@ -38,7 +40,13 @@ export default function FavoriteRestaurants({
       </Main>
     );
   }
-  
+/*
+  FavoriteRestaurants.propTypes = {
+    favoriteRestaurants: PropTypes.array,
+    updateFavorites: PropTypes.func,
+
+  };
+  */
   const Main = styled.div`
     margin-top: 6rem;
     margin-bottom: 8rem;

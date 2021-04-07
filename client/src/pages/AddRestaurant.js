@@ -1,4 +1,5 @@
-import RestaurantForm from '../components/RestaurantForm'
+import RestaurantForm from '../components/RestaurantForm';
+import PropTypes from 'prop-types';
 
 
 export default function AddRestaurant(
@@ -10,4 +11,9 @@ export default function AddRestaurant(
     </div>
     )
 }
+
+AddRestaurant.propTypes = {
+    addRestaurant: PropTypes.func,
+
+  };
 

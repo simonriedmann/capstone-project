@@ -12,6 +12,7 @@ import usePlacesAutocomplete, {
 import {  Combobox,  ComboboxInput,  ComboboxPopover,  ComboboxList,  ComboboxOption} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import mapStyles from '../mapStyles';
 
 
@@ -239,6 +240,14 @@ function Locate({ panTo }) {
       </div>
     );
   }
+  /*
+  Map.propTypes = {
+    restaurantData: PropTypes.array,
+    addFavoriteRestaurant: PropTypes.func,
+    favoriteRestaurants: PropTypes.array,
+
+  };*/
+  
   
   
   

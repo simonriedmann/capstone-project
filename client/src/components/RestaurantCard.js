@@ -9,8 +9,6 @@ export default function RestaurantCard({
   isFavorite,
 }) {
 
-
-
   return (
     <Card>
       <DeleteButton onClick={onDeleteCard}>x</DeleteButton>
@@ -31,8 +29,14 @@ export default function RestaurantCard({
     </Card>
   );
 }
-
-  
+/*
+RestaurantCard.propTypes = {
+  restaurant: PropTypes.object,
+  onDeleteCard: PropTypes.func,
+  onAddToFavorites: PropTypes.func,
+  isFavorite: PropTypes.bool,
+};
+  */
   const Card = styled.div`
     background: grey;
     border-radius: 1rem;
