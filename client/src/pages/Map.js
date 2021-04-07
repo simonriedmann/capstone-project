@@ -72,6 +72,7 @@ export default function Map({
   
   if(loadError) return "Error loading maps";
   if(!isLoaded) return "Loading Maps";
+
   
   return (
     <Main>
@@ -135,34 +136,35 @@ export default function Map({
     
     <ButtonBox>
             
-              <FilterButton onClick={() => filterByType("Italian")}>
-                Show Italian
-              </FilterButton>
-              <FilterButton onClick={() => filterByType("German")}>
-                Show German
-              </FilterButton>
-              <FilterButton onClick={() => filterByType("Cafe")}>
-                Show Cafe
-              </FilterButton>
-              <FilterButton onClick={() => filterByType("Vegan" || "Vegetarian")}>
-                Show Vegan/Vegetarian
-              </FilterButton>
-              <FilterButton onClick={() => filterByType("Bakery")}>
-                Show Bakery
-              </FilterButton>
-              <FilterButton onClick={() => filterByType("Mexican")}>
-                Show Mexican
-              </FilterButton>
-
+            <FilterButton onClick={() => filterByType("Italian")}>
+              Show Italian
+            </FilterButton>
+            <FilterButton onClick={() => filterByType("German")}>
+              Show German
+            </FilterButton>
+            <FilterButton onClick={() => filterByType("Cafe")}>
+              Show Cafe
+            </FilterButton>
+            <FilterButton onClick={() => filterByType("Vegan" || "Vegetarian")}>
+              Show Vegan/Vegetarian
+            </FilterButton>
+            <FilterButton onClick={() => filterByType("Bakery")}>
+              Show Bakery
+            </FilterButton>
+            <FilterButton onClick={() => filterByType("Mexican")}>
+              Show Mexican
+            </FilterButton>
+          
             <FilterButton onClick={() => showAllRestaurants(restaurantData)}>Reset</FilterButton>
-          </ButtonBox>
+
+    </ButtonBox>
+
+    
     </Main>
     )}
 
 
-const MapContainer = styled.div`
-    margin-top: 6rem;
-`
+
 
 function Locate({ panTo }) {
     return (
@@ -240,13 +242,13 @@ function Locate({ panTo }) {
       </div>
     );
   }
-  /*
+  
   Map.propTypes = {
     restaurantData: PropTypes.array,
     addFavoriteRestaurant: PropTypes.func,
     favoriteRestaurants: PropTypes.array,
 
-  };*/
+  };
   
   
   
@@ -317,6 +319,7 @@ function Locate({ panTo }) {
   }
 
 
+
   const Main = styled.div`
     margin-top: 6rem;
     margin-bottom: 8rem;
@@ -324,24 +327,32 @@ function Locate({ panTo }) {
 
   `;
 
-const ButtonBox = styled.div`
-display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-gap: 0.5rem;
-place-items: center;
-margin: 0.5rem auto 1rem;
-padding: 0.25rem;
-`;
+  const MapContainer = styled.div`
+    margin-top: 6rem;
+`
 
-const FilterButton = styled.button`
-color: var(--grey-500);
-fill: var(--grey-500);
-font-size: 1rem;
-border-radius: 0.5rem;
-display: flex;
-margin: 0.5rem;
-}`;
+  const ButtonBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  place-items: center;
+  margin: 0.5rem auto 1rem;
+  padding: 0.25rem;
+  `;
+
+  const FilterButton = styled.button`
+  color: var(--grey-500);
+  background: lightgrey;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  margin: 0.5rem;
+
+  ::&after {
+    background: orange;
+    color: white;
+  }`;
 
 const FavoriteButton = styled.div`
   right: 2rem;

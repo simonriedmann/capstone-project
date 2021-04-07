@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 
 
 export default function RestaurantCard({
-  restaurant,
-  onDeleteCard,
-  onAddToFavorites,
+  restaurant, 
   isFavorite,
+  onRemoveFromFavorites
 }) {
 
   return (
     <Card>
-      <DeleteButton onClick={onDeleteCard}>x</DeleteButton>
       <CardContent>
         <h4>{restaurant.name}</h4>
-        <FavoriteButton isFavorite={isFavorite} onClick={onAddToFavorites}>
+        <FavoriteButton isFavorite={isFavorite} onClick={onRemoveFromFavorites}>
           <div></div>
         </FavoriteButton>
         <Description>
@@ -29,14 +27,14 @@ export default function RestaurantCard({
     </Card>
   );
 }
-/*
+
 RestaurantCard.propTypes = {
   restaurant: PropTypes.object,
   onDeleteCard: PropTypes.func,
   onAddToFavorites: PropTypes.func,
   isFavorite: PropTypes.bool,
 };
-  */
+
   const Card = styled.div`
     background: grey;
     border-radius: 1rem;
@@ -82,21 +80,7 @@ RestaurantCard.propTypes = {
     line-height: 1.5rem;
   `;
   
-  const Buttons = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    padding: 1rem;
-    margin-bottom: 0.25rem;
-  `;
-  const DeleteButton = styled.span`
-    color: var(--grey-400);
-    cursor: pointer;
-    font-size: 2rem;
-    position: absolute;
-    top: 0.7rem;
-    right: 1.5rem;
-  `;
+
 
   const FavoriteButton = styled.div`
   right: 2.5rem;

@@ -4,5 +4,5 @@ This is a documentation about my header.
 
 
 ```js
-<Header />
+<Header isStatic/>
 ```

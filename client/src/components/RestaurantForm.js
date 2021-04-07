@@ -138,7 +138,7 @@ export default function RestaurantForm({ onSubmitForm }) {
 
       <Buttons>
         <Button text="Add" color="orange" />
-        <Button type="reset" color="white" text="Reset" handlerFn={resetForm} />
+        <Button type="reset" color="lightgrey" text="Reset" handlerFn={resetForm} />
       </Buttons>
     </Form>
   );

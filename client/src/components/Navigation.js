@@ -5,9 +5,9 @@ import { ReactComponent as MapLogo} from '../assets/map.svg';
 import { ReactComponent as PlusSign} from '../assets/plus.svg';
 
 
-export default function Navigation(){
+export default function Navigation({isStatic}){
     return (
-          <Nav>
+          <Nav isStatic={isStatic}>
                 <NavLink exact to="/">
                   <MapLogo />
                 </NavLink>
@@ -25,7 +25,7 @@ export default function Navigation(){
 
 
 const Nav = styled.nav`
-  position: fixed;
+  position: ${(props)=>(props.isStatic ? "static" : "fixed")};
   display: flex;
   color: grey;
   background: orange;
@@ -34,8 +34,7 @@ const Nav = styled.nav`
   list-style: none;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
-  position: fixed;
+  padding: ${(props)=>(props.isStatic ? "2rem 0" : "2rem")};
   bottom: 0;
   left: 0;
   right: 0;

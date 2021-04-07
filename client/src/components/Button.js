@@ -27,4 +27,5 @@ const ButtonStyled = styled.button`
   font-size: 1.175rem;
   padding: 0.7rem;
   min-width: 10rem;
+  margin: 0.2rem  
 `;

@@ -27,9 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cy:open": "cypress open",
-    "styleguide": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "cy:open": "cypress open"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +49,7 @@
   },
   "proxy": "http://localhost:4000",
   "devDependencies": {
+    "cypress": "^7.0.0",
     "react-styleguidist": "^11.1.6"
   }
 }

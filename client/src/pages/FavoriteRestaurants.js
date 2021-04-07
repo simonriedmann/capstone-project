@@ -8,9 +8,9 @@ export default function FavoriteRestaurants({
   }) {
     
     const isFavorite = (restaurant) =>
-      favoriteRestaurants.some(
-        (favoriteRestaurant) => restaurant._id === favoriteRestaurant._id
-      )
+    favoriteRestaurants.some(
+      (favoriteRestaurant) => restaurant._id === favoriteRestaurant._id
+    )
 
     const removeFavoriteRestaurant = (restaurant) => {
         if (isFavorite(restaurant)) {
@@ -31,7 +31,6 @@ export default function FavoriteRestaurants({
             <RestaurantCard
               key={restaurant._id}
               restaurant={restaurant}
-              onToggleFavoriteRestaurant={() => removeFavoriteRestaurant(restaurant)}
               isFavorite={isFavorite(restaurant)}
               onRemoveFromFavorites={() => removeFavoriteRestaurant(restaurant)}
             />
@@ -40,13 +39,13 @@ export default function FavoriteRestaurants({
       </Main>
     );
   }
-/*
+
   FavoriteRestaurants.propTypes = {
     favoriteRestaurants: PropTypes.array,
     updateFavorites: PropTypes.func,
 
   };
-  */
+  
   const Main = styled.div`
     margin-top: 6rem;
     margin-bottom: 8rem;
