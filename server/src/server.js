@@ -24,11 +24,11 @@ mongoose.connect(connectionString, {
   useUnifiedTopology: true,
   useFindAndModify: false,
 });
-
+/*
 server.get('/', (req, res) =>
   res.json({ status: 'Server is up and running.' })
 );
-
+*/
 server.use('/api', [
   restaurantsRoutes,
 
