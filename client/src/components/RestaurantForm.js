@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
@@ -13,15 +14,31 @@ export default function RestaurantForm({ onSubmitForm }) {
     postal_code: "",
     city: "",
     phone: "",
-    coordinates: []
+    coordinates: [0, 0]
 }
   const [restaurant, setRestaurant] = useState(initialRestaurant);
+
 
   const handleChange = (event) => {
     const field = event.target;
     let value = event.target.value;
     setRestaurant({ ...restaurant, [field.name]: value });
   };
+
+  const updateCoordinates = (event) =>{
+    let value = event.target.value;
+    let name = event.target.name;
+
+    let coordinates = restaurant.coordinates;
+
+    if (name === 'coordinate_latitude') {
+      coordinates[0] = value
+    } else {
+      coordinates[1] = value
+    }
+
+    setRestaurant({ ...restaurant, coordinates});
+  }
 
 
   const isValidRestaurantName = (name) => name.length >= 3;
@@ -118,24 +135,23 @@ export default function RestaurantForm({ onSubmitForm }) {
 
       </Contact>
 
-      <label htmlFor="coordinates_latitude">Coordinate Latitude</label>
+      <label htmlFor="coordinates">Coordinates</label>
       <input
         type="text"
-        name="coordinates_latitude"
+        name="coordinate_latitude"
+        placeholder="Latitude"
         value={restaurant.coordinates[0]}
-        onChange={handleChange}
+        onChange={updateCoordinates}
       />
-
-      <label htmlFor="coordinates_longitude">Coordinate Longitude</label>
+      
       <input
         type="text"
-        name="coordinates_longitude"
+        name="coordinate_longitude"
+        placeholder="Longitude"
         value={restaurant.coordinates[1]}
-        onChange={handleChange}
+        onChange={updateCoordinates}
       />
-  
-
-
+      
       <Buttons>
         <Button text="Add" color="orange" />
         <Button type="reset" color="lightgrey" text="Reset" handlerFn={resetForm} />

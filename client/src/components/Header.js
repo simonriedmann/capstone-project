@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 export default function Header({isStatic}) {
     return (
@@ -9,6 +11,10 @@ export default function Header({isStatic}) {
     </HeaderSection>
     )
 }
+
+Header.propTypes = {
+    isStatic: PropTypes.bool,
+  };
 
 const HeaderSection = styled.section`
     position: ${(props)=>(props.isStatic ? "static" : "fixed")};

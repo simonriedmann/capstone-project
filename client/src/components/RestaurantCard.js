@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 
@@ -30,9 +31,8 @@ export default function RestaurantCard({
 
 RestaurantCard.propTypes = {
   restaurant: PropTypes.object,
-  onDeleteCard: PropTypes.func,
-  onAddToFavorites: PropTypes.func,
   isFavorite: PropTypes.bool,
+  onRemoveFromFavorites: PropTypes.func,
 };
 
   const Card = styled.div`

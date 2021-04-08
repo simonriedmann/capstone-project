@@ -1,5 +1,7 @@
+import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from "react-router-dom";
+import PropTypes from 'prop-types';
 import { ReactComponent as HeartLogo} from '../assets/heart.svg';
 import { ReactComponent as MapLogo} from '../assets/map.svg';
 import { ReactComponent as PlusSign} from '../assets/plus.svg';
@@ -22,6 +24,10 @@ export default function Navigation({isStatic}){
           </Nav>
     )
 }
+
+Navigation.propTypes = {
+  isStatic: PropTypes.bool,
+};
 
 
 const Nav = styled.nav`

@@ -60,12 +60,13 @@ export default function Map({
   }, []);
 
   const filterByType = (typeToUpdate) => {
-    setDisplayedRestaurants(
+    if (displayedRestaurants.type.length > 1){setDisplayedRestaurants(
       restaurantData.filter((restaurant) => restaurant.type === typeToUpdate)
-    )
+    )}
+    else {setDisplayedRestaurants(restaurantData)}
   }
 
-  const showAllRestaurants = (restaurants) => {
+  const showAllRestaurants = () => {
     setDisplayedRestaurants(restaurantData);
   }
 
@@ -247,8 +248,15 @@ function Locate({ panTo }) {
     restaurantData: PropTypes.array,
     addFavoriteRestaurant: PropTypes.func,
     favoriteRestaurants: PropTypes.array,
-
   };
+
+  Locate.propTypes = {
+    panTo: PropTypes.func,
+  };
+
+  Search.propTypes = {
+    panTo: PropTypes.func,
+  }
   
   
   

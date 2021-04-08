@@ -1,6 +1,8 @@
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import RestaurantCard from '../components/RestaurantCard';
+
 
 export default function FavoriteRestaurants({
     favoriteRestaurants,
