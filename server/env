@@ -1,0 +1,1 @@
+const DB_CONNECTION='mongodb+srv://garfiled:RtShyCFp69YktHJ@cluster0.qdwtp.mongodb.net/glutenfree-restaurants?retryWrites=true&w=majority'

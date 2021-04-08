@@ -12,6 +12,7 @@ import usePlacesAutocomplete, {
 import {  Combobox,  ComboboxInput,  ComboboxPopover,  ComboboxList,  ComboboxOption} from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import mapStyles from '../mapStyles';
 
 
@@ -43,6 +44,8 @@ export default function Map({
     libraries,
   });
 
+
+  const [displayedRestaurants, setDisplayedRestaurants] = useState(restaurantData);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
 
@@ -53,13 +56,27 @@ export default function Map({
 
   const panTo = React.useCallback(({ lat, lng }) => {
     mapRef.current.panTo({ lat, lng });
-    mapRef.current.setZoom(14);
+    mapRef.current.setZoom(9);
   }, []);
+
+  const filterByType = (typeToUpdate) => {
+    if (displayedRestaurants.type.length > 1){setDisplayedRestaurants(
+      restaurantData.filter((restaurant) => restaurant.type === typeToUpdate)
+    )}
+    else {setDisplayedRestaurants(restaurantData)}
+  }
+
+  const showAllRestaurants = () => {
+    setDisplayedRestaurants(restaurantData);
+  }
+
   
   if(loadError) return "Error loading maps";
   if(!isLoaded) return "Loading Maps";
+
   
   return (
+    <Main>
     <MapContainer>
       <Locate panTo={panTo} />
       <Search panTo={panTo} />
@@ -73,7 +90,7 @@ export default function Map({
         onLoad={onMapLoad}
 
         >
-        {restaurantData.map(restaurant => (
+        {displayedRestaurants.map(restaurant => (
             <Marker
               key={restaurant._id}
               position={{
@@ -116,12 +133,39 @@ export default function Map({
                 </InfoWindow>
               ) : null} 
       </GoogleMap>
-    </MapContainer>)}
+    </MapContainer>
+    
+    <ButtonBox>
+            
+            <FilterButton onClick={() => filterByType("Italian")}>
+              Show Italian
+            </FilterButton>
+            <FilterButton onClick={() => filterByType("German")}>
+              Show German
+            </FilterButton>
+            <FilterButton onClick={() => filterByType("Cafe")}>
+              Show Cafe
+            </FilterButton>
+            <FilterButton onClick={() => filterByType("Vegan" || "Vegetarian")}>
+              Show Vegan/Vegetarian
+            </FilterButton>
+            <FilterButton onClick={() => filterByType("Bakery")}>
+              Show Bakery
+            </FilterButton>
+            <FilterButton onClick={() => filterByType("Mexican")}>
+              Show Mexican
+            </FilterButton>
+          
+            <FilterButton onClick={() => showAllRestaurants(restaurantData)}>Reset</FilterButton>
+
+    </ButtonBox>
+
+    
+    </Main>
+    )}
 
 
-const MapContainer = styled.div`
-    margin-top: 6rem;
-`
+
 
 function Locate({ panTo }) {
     return (
@@ -200,6 +244,21 @@ function Locate({ panTo }) {
     );
   }
   
+  Map.propTypes = {
+    restaurantData: PropTypes.array,
+    addFavoriteRestaurant: PropTypes.func,
+    favoriteRestaurants: PropTypes.array,
+  };
+
+  Locate.propTypes = {
+    panTo: PropTypes.func,
+  };
+
+  Search.propTypes = {
+    panTo: PropTypes.func,
+  }
+  
+  
   
   
   function restaurantIcon(type) {
@@ -268,11 +327,46 @@ function Locate({ panTo }) {
   }
 
 
- const FavoriteButton = styled.div`
-  right: 2.5rem;
+
+  const Main = styled.div`
+    margin-top: 6rem;
+    margin-bottom: 8rem;
+
+
+  `;
+
+  const MapContainer = styled.div`
+    margin-top: 6rem;
+`
+
+  const ButtonBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  place-items: center;
+  margin: 0.5rem auto 1rem;
+  padding: 0.25rem;
+  `;
+
+  const FilterButton = styled.button`
+  color: var(--grey-500);
+  background: lightgrey;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  margin: 0.5rem;
+
+  ::&after {
+    background: orange;
+    color: white;
+  }`;
+
+const FavoriteButton = styled.div`
+  right: 2rem;
   margin-top: 0.25rem;
   position: absolute;
-  top: 2.4rem;
+  top: 4.5rem;
 
   div {
     height: 1rem;

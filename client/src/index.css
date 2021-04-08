@@ -1,11 +1,11 @@
 .search {
     position: absolute;
-    top: 1rem;
+    top: 2rem;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
     max-width: 400px;
-    z-index: 10;
+    z-index: 15;
     margin-top: 70px;
   }
   
@@ -13,12 +13,13 @@
     padding: 0.5rem;
     font-size: 1.5rem;
     width: 100%;
+    z-index: 15;
   }
   
   .locate {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 31rem;
+    left: 0.5rem;
     background: none;
     border: none;
     z-index: 10;

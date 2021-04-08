@@ -1,22 +1,19 @@
+import React from 'react';
 import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 
 
 export default function RestaurantCard({
-  restaurant,
-  onDeleteCard,
-  onAddToFavorites,
+  restaurant, 
   isFavorite,
+  onRemoveFromFavorites
 }) {
-
-
 
   return (
     <Card>
-      <DeleteButton onClick={onDeleteCard}>x</DeleteButton>
       <CardContent>
         <h4>{restaurant.name}</h4>
-        <FavoriteButton isFavorite={isFavorite} onClick={onAddToFavorites}>
+        <FavoriteButton isFavorite={isFavorite} onClick={onRemoveFromFavorites}>
           <div></div>
         </FavoriteButton>
         <Description>
@@ -32,7 +29,12 @@ export default function RestaurantCard({
   );
 }
 
-  
+RestaurantCard.propTypes = {
+  restaurant: PropTypes.object,
+  isFavorite: PropTypes.bool,
+  onRemoveFromFavorites: PropTypes.func,
+};
+
   const Card = styled.div`
     background: grey;
     border-radius: 1rem;
@@ -41,6 +43,7 @@ export default function RestaurantCard({
     min-width: 16rem;
     overflow: hidden;
     z-index: 1;
+    margin: 0.5rem;
   
     position: relative;
   `;
@@ -52,11 +55,11 @@ export default function RestaurantCard({
   
     p {
       color: white;
-      font-size: 0.75rem;
+      font-size: 1rem;
       display: inline-block;
       margin-bottom: 0.75rem;
       left: 0;
-      line-height: 0.75rem;
+      line-height: 1rem;
       padding-right: 0.75rem;
       position: relative;
   
@@ -77,21 +80,7 @@ export default function RestaurantCard({
     line-height: 1.5rem;
   `;
   
-  const Buttons = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    padding: 1rem;
-    margin-bottom: 0.25rem;
-  `;
-  const DeleteButton = styled.span`
-    color: var(--grey-400);
-    cursor: pointer;
-    font-size: 2rem;
-    position: absolute;
-    top: 0.7rem;
-    right: 1.5rem;
-  `;
+
 
   const FavoriteButton = styled.div`
   right: 2.5rem;
