@@ -60,10 +60,9 @@ export default function Map({
   }, []);
 
   const filterByType = (typeToUpdate) => {
-    if (displayedRestaurants.type.length > 1){setDisplayedRestaurants(
+    setDisplayedRestaurants(
       restaurantData.filter((restaurant) => restaurant.type === typeToUpdate)
-    )}
-    else {setDisplayedRestaurants(restaurantData)}
+    )
   }
 
   const showAllRestaurants = () => {
