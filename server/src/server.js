@@ -10,6 +10,7 @@ import restaurantsRoutes from './routes/restaurantsRoutes.routes.js';
 const __dirname = dirname(import.meta.url);
 
 dotenv.config();
+
 const server = express();
 server.use(cors());
 server.use(express.json());
@@ -17,7 +18,6 @@ server.use(express.json());
 const DB_CONNECTION = process.env.DB_CONNECTION || 'mongodb://localhost:27017/glutenfree-restaurants';
 
 const connectionString = DB_CONNECTION;
-
 
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
