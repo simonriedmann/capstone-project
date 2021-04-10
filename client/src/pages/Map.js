@@ -134,30 +134,6 @@ export default function Map({
       </GoogleMap>
     </MapContainer>  
 
-    <ButtonBox>
-            
-            <FilterButton onClick={() => filterByType("Italian")}>
-              Show Italian
-            </FilterButton>
-            <FilterButton onClick={() => filterByType("German")}>
-              Show German
-            </FilterButton>
-            <FilterButton onClick={() => filterByType("Cafe")}>
-              Show Cafe
-            </FilterButton>
-            <FilterButton onClick={() => filterByType("Vegan" || "Vegetarian")}>
-              Show Vegan/Vegetarian
-            </FilterButton>
-            <FilterButton onClick={() => filterByType("Bakery")}>
-              Show Bakery
-            </FilterButton>
-            <FilterButton onClick={() => filterByType("Mexican")}>
-              Show Mexican
-            </FilterButton>
-          
-            <FilterButton onClick={() => showAllRestaurants(restaurantData)}>Reset</FilterButton>
-
-    </ButtonBox>
     </Main>
     )}
 
