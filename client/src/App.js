@@ -40,7 +40,7 @@ export default function App() {
   };
 
   const addRestaurant = (restaurant) => {
-    setRestaurants([...restaurants, { ...restaurant, id: uuidv4() }]);
+    setRestaurants([...restaurants, { ...restaurant, _id: uuidv4() }]);
     addRestaurantToDatabase(restaurant);
   };
 

@@ -132,8 +132,8 @@ export default function Map({
                 </InfoWindow>
               ) : null} 
       </GoogleMap>
-    </MapContainer>
-    
+    </MapContainer>  
+
     <ButtonBox>
             
             <FilterButton onClick={() => filterByType("Italian")}>
@@ -158,8 +158,6 @@ export default function Map({
             <FilterButton onClick={() => showAllRestaurants(restaurantData)}>Reset</FilterButton>
 
     </ButtonBox>
-
-    
     </Main>
     )}
 
